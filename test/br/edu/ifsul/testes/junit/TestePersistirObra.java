@@ -34,7 +34,7 @@ public class TestePersistirObra {
         
         try {
         	Autor a = em.find(Autor.class, 1);
-        	Livro l = em.find(Livro.class, 1);
+        	Livro l = em.find(Livro.class, "Teste_Livro_ISBN");
         	
         	a.getObras().add(l);
 

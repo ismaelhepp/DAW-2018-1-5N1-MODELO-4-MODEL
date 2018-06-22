@@ -35,10 +35,16 @@ public class TestePersistirCatalogo {
             Catalogo c = new Catalogo();
             c.setNome("Catalogo_Teste");
             c.setDescricao("Catalogo_Teste_Descricao");
-            c.setLivraria(em.find(Livraria.class, 1));
+            
+            Livraria l = new Livraria();
+            l.setNome("Livraria_Teste_Nome");
+            l.setSite("http://www.site.com");
+            
+            em.getTransaction().begin();
+            em.persist(l);
+            c.setLivraria(l);
 //            c.adicionarLivro(em.find(Livro.class, "Teste_Livro_ISBN"));
 			
-            em.getTransaction().begin();
             em.persist(c);
             em.getTransaction().commit();
         } catch (Exception e){
